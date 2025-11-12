@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Doação de Sangue</title>
-    <link rel="stylesheet" href="../assets/style.css">
+    <title>Esqueci Minha Senha - Doação de Sangue</title> 
+    <link rel="stylesheet" href="../assets/style.css"> 
 </head>
 <body>
     <header id="cabecalho">
@@ -21,24 +21,22 @@
 
     <div id="container-principal">
         <div id="caixa-login">
-            <h1 class="titulo-principal">Acesso do Doador</h1>
+            <h1 class="titulo-principal">Recuperar Senha</h1>
             
-            <form id="formulario-login">
+            <p class="descricao-formulario">
+                Informe o e-mail cadastrado para receber as instruções de recuperação de senha.
+            </p>
+
+            <form id="formulario-recuperacao">
                 <div class="campo-formulario">
                     <label for="email">E-mail:</label>
                     <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com" required>
                 </div>
                 
-                <div class="campo-formulario">
-                    <label for="senha">Senha:</label>
-                    <input type="password" id="senha" name="senha" placeholder="********" required>
-                </div>
-                
-                <button type="submit" id="botao-entrar">Entrar</button>
+                <button type="submit" id="botao-enviar">Enviar Instruções</button>
                 
                 <div class="links-adicionais">
-                    <a href="#" class="link-recuperar-senha">Esqueci minha senha</a>
-                    <a href="#" class="link-cadastro">Ainda não sou doador? Cadastre-se</a>
+                    <a href="login.html" class="link-voltar-login">Voltar para o Login</a>
                 </div>
             </form>
         </div>
@@ -62,6 +60,8 @@
                 <img src="../assets/img/logo-twitter.png" alt="">
             </a>
         </div>
+        </div>
     </footer>
+    <script src="../assets/script.js"></script>
 </body>
 </html>

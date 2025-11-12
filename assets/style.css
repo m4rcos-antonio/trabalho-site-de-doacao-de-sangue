@@ -1,0 +1,172 @@
+/* Estilos Gerais */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Fundo cinza claro */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Para organizar cabeçalho, conteúdo e rodapé */
+    min-height: 100vh;
+}
+
+/* Cabeçalho */
+#cabecalho {
+    background-color: #ffffff;
+    color: #c0392b;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.gota-de-sangue {
+    margin-right: 10px;
+    font-size: 28px;
+    height: 40px;
+    width: 40px;
+}
+
+#menu-navegacao a {
+    color: #c0392b;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+#menu-navegacao a:hover {
+    color: #e74c3c;
+}
+
+/* Container Principal (Ajustado para centralizar o conteúdo) */
+#container-principal {
+    flex-grow: 1; /* Faz com que ocupe o espaço restante */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 50px auto; /* Adiciona margem superior e inferior para respiro */
+}
+
+/* Caixa de Login */
+#caixa-login {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%; /* Garante que ocupe a largura máxima do container */
+}
+
+/* Título Principal */
+.titulo-principal {
+    color: #c0392b;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+/* Formulário de Login */
+#formulario-login {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Campo do Formulário */
+.campo-formulario {
+    text-align: left;
+}
+
+.campo-formulario label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.campo-formulario input[type="email"],
+.campo-formulario input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Botão Entrar */
+#botao-entrar {
+    background-color: #e74c3c;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+#botao-entrar:hover {
+    background-color: #c0392b;
+}
+
+/* Links Adicionais */
+.links-adicionais {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.links-adicionais a {
+    color: #3498db;
+    text-decoration: none;
+    display: block;
+    margin-top: 5px;
+}
+
+.links-adicionais a:hover {
+    text-decoration: underline;
+}
+
+/* Rodapé */
+#rodape {
+    background-color: #333; /* Fundo escuro */
+    color: #f4f4f4;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto; /* Empurra o rodapé para o final da página */
+    font-size: 14px;
+}
+
+.secao-rodape {
+    display: flex;
+    align-items: center;
+}
+
+.link-social {
+    color: #f4f4f4;
+    text-decoration: none;
+    margin-left: 15px;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+.link-social:hover {
+    color: #e74c3c; /* Cor de destaque no hover */
+}
+
+/* Ajuste para o placeholder de ícone no rodapé */
+.secao-rodape .icone-placeholder {
+    font-size: 20px;
+    margin-right: 0;
+}
