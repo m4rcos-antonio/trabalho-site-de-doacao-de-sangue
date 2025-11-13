@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Esqueci Minha Senha - Doação de Sangue</title> 
-    <link rel="stylesheet" href="../assets/style.css"> 
+    <title>Login - Doação de Sangue</title>
+    <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
     <header id="cabecalho">
@@ -18,31 +18,18 @@
             <a href="#" class="link-menu">Contato</a>
         </nav>
     </header>
-
-    <div id="container-principal">
-        <div id="caixa-login">
-            <h1 class="titulo-principal">Recuperar Senha</h1>
-            
-            <p class="descricao-formulario">
-                Informe o e-mail cadastrado para receber as instruções de recuperação de senha.
-            </p>
-
-            <form id="formulario-recuperacao">
-                <div class="campo-formulario">
-                    <label for="email">E-mail:</label>
-                    <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com" required>
-                </div>
-                
-                <button type="submit" id="botao-enviar">Enviar Instruções</button>
-                
-                <div class="links-adicionais">
-                    <a href="login.html" class="link-voltar-login">Voltar para o Login</a>
-                </div>
-            </form>
+     <main>
+        <div class="content-wrapper">
+           <img src="../assets/img/gota-de-sangue.png" class="gota-de-sangue">
+            <h2>Bem-vindo ao Doe Sangue Já</h2>
+            <p>Sua doação de sangue pode salvar vidas. Cadastre-se agora e faça parte dessa corrente de solidariedade.</p>
+            <div class="button-group">
+                <a href="cadastro.html" class="btn btn-primary">Cadastrar-se</a>
+                <a href="login.html" class="btn btn-outline">Fazer Login</a>
+            </div>
         </div>
-    </div>
-
-    <footer id="rodape">
+    </main>
+        <footer id="rodape">
         <div class="secao-rodape">
             <p>&copy; 2025 Doe Sangue Já. Todos os direitos reservados.</p>
         </div>
@@ -60,8 +47,6 @@
                 <img src="../assets/img/logo-twitter.png" alt="">
             </a>
         </div>
-        </div>
     </footer>
-    <script src="../assets/script.js"></script>
 </body>
 </html>
