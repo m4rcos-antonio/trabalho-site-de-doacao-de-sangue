@@ -628,6 +628,356 @@ main {
         .btn-outline:hover {
             background-color: #fef2f2;
         }
+        /* ===== Variáveis de Cores ===== */
+:root {
+    --donor-primary-color: #c0392b;
+    --donor-primary-hover: #e74c3c;
+    --donor-secondary-color: #3498db;
+    --donor-success-color: #27ae60;
+    --donor-danger-color: #e74c3c;
+    --donor-warning-color: #f39c12;
+    --donor-light-bg: #f4f4f4;
+    --donor-white: #ffffff;
+    --donor-text-dark: #333333;
+    --donor-text-light: #666666;
+    --donor-border-color: #cccccc;
+    --donor-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --donor-shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
 
+/* ===== Reset e Estilos Gerais - Isolados ===== */
+.donor-page {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.donor-page * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.donor-page html,
+.donor-page body {
+    height: 100%;
+}
+
+.donor-page {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #ffe5e5 0%, #ffcccc 100%);
+    color: var(--donor-text-dark);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ===== Container Principal ===== */
+.donor-container {
+    flex: 1;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* ===== Link Voltar ===== */
+.donor-back-link {
+    margin-bottom: 20px;
+}
+
+.donor-back-link a {
+    color: var(--donor-primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.donor-back-link a:hover {
+    color: var(--donor-primary-hover);
+}
+
+/* ===== Card ===== */
+.donor-card {
+    background-color: var(--donor-white);
+    border-radius: 8px;
+    box-shadow: var(--donor-shadow);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.donor-card:hover {
+    box-shadow: var(--donor-shadow-hover);
+}
+
+.donor-card-header {
+    background: linear-gradient(135deg, var(--donor-primary-color) 0%, #a93226 100%);
+    color: var(--donor-white);
+    padding: 30px;
+    text-align: center;
+}
+
+.donor-card-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.donor-card-description {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.donor-card-content {
+    padding: 30px;
+}
+
+/* ===== Formulário ===== */
+.donor-form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.donor-form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.donor-section-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--donor-text-dark);
+    border-bottom: 2px solid var(--donor-primary-color);
+    padding-bottom: 10px;
+}
+
+/* ===== Grupos de Formulário ===== */
+.donor-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.donor-form-row-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.donor-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.donor-form-group label {
+    font-weight: 600;
+    color: var(--donor-text-dark);
+    font-size: 14px;
+}
+
+.donor-form-group input,
+.donor-form-group select {
+    padding: 12px;
+    border: 1px solid var(--donor-border-color);
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.donor-form-group input:focus,
+.donor-form-group select:focus {
+    outline: none;
+    border-color: var(--donor-primary-color);
+    box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.1);
+}
+
+.donor-form-group input::placeholder {
+    color: #999999;
+}
+
+/* ===== Botões ===== */
+.donor-form-actions {
+    display: flex;
+    gap: 15px;
+    padding-top: 20px;
+    border-top: 1px solid var(--donor-border-color);
+    margin-top: 10px;
+}
+
+.donor-btn {
+    flex: 1;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.donor-btn-primary {
+    background-color: var(--donor-primary-color);
+    color: var(--donor-white);
+}
+
+.donor-btn-primary:hover {
+    background-color: var(--donor-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(192, 57, 43, 0.3);
+}
+
+.donor-btn-primary:active {
+    transform: translateY(0);
+}
+
+.donor-btn-primary:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.donor-btn-secondary {
+    background-color: transparent;
+    color: var(--donor-primary-color);
+    border: 2px solid var(--donor-primary-color);
+}
+
+.donor-btn-secondary:hover {
+    background-color: var(--donor-primary-color);
+    color: var(--donor-white);
+    transform: translateY(-2px);
+}
+
+/* ===== Mensagens de Erro ===== */
+.donor-error-message {
+    background-color: #fee;
+    color: var(--donor-danger-color);
+    padding: 12px;
+    border-radius: 4px;
+    border-left: 4px solid var(--donor-danger-color);
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.donor-success-message {
+    background-color: #efe;
+    color: var(--donor-success-color);
+    padding: 12px;
+    border-radius: 4px;
+    border-left: 4px solid var(--donor-success-color);
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.donor-field-error {
+    color: var(--donor-danger-color);
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.donor-form-group input.donor-error,
+.donor-form-group select.donor-error {
+    border-color: var(--donor-danger-color);
+    background-color: #fee;
+}
+
+/* ===== Responsividade ===== */
+@media (max-width: 768px) {
+    .donor-container {
+        padding: 20px 15px;
+    }
+
+    .donor-card-header {
+        padding: 20px;
+    }
+
+    .donor-card-title {
+        font-size: 24px;
+    }
+
+    .donor-card-content {
+        padding: 20px;
+    }
+
+    .donor-form-row,
+    .donor-form-row-3 {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .donor-form-actions {
+        flex-direction: column;
+    }
+
+    .donor-btn {
+        width: 100%;
+    }
+
+    .donor-section-title {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .donor-container {
+        padding: 15px 10px;
+    }
+
+    .donor-card-header {
+        padding: 15px;
+    }
+
+    .donor-card-title {
+        font-size: 20px;
+    }
+
+    .donor-card-content {
+        padding: 15px;
+    }
+
+    .donor-form-section {
+        gap: 15px;
+    }
+
+    .donor-form-group label {
+        font-size: 13px;
+    }
+
+    .donor-form-group input,
+    .donor-form-group select {
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    .donor-btn {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+}
+
+/* ===== Animações ===== */
+@keyframes donor-slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.donor-card {
+    animation: donor-slideIn 0.3s ease-out;
+}
 
         
