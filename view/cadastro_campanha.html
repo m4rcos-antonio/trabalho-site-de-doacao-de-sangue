@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Campanha - Doação de Sangue</title>
+    <!-- Novo CSS específico para esta página, mantendo cabeçalho e rodapé -->
+    <link rel="stylesheet" href="../assets/style.css"> 
+</head>
+<body>
+    <header id="cabecalho">
+        <div class="logo">
+            <img src="../assets/img/gota-de-sangue.png" class="gota-de-sangue">
+            <span class="nome-site">Doe Sangue Já</span>
+        </div>
+        <nav id="menu-navegacao">
+            <a href="index.html" class="link-menu">Início</a>
+            <a href="#" class="link-menu">Sobre</a>
+            <a href="#" class="link-menu">Contato</a>
+        </nav>
+    </header>
+
+    <div id="container-principal">
+        <div id="container-cadastro">
+            <h1 class="titulo-principal">Cadastrar Nova Campanha</h1>
+            
+            <form id="formulario-campanha" action="processa_campanha.php" method="POST">
+                
+                <div class="campo-formulario">
+                    <label for="nome-campanha">Nome da Campanha:</label>
+                    <input type="text" id="nome-campanha" name="nome-campanha" placeholder="Ex: Campanha de Inverno 2025" required>
+                </div>
+
+                <div class="campo-formulario campo-full">
+                    <label for="descricao">Descrição Detalhada:</label>
+                    <textarea id="descricao" name="descricao" rows="4" placeholder="Descreva o objetivo, público-alvo e detalhes importantes da campanha." required></textarea>
+                </div>
+
+                <div class="campo-formulario">
+                    <label for="local">Local de Doação:</label>
+                    <input type="text" id="local" name="local" placeholder="Ex: Hemocentro Central, Rua das Flores, 123" required>
+                </div>
+
+                <div class="campo-formulario">
+                    <label for="data-inicio">Data de Início:</label>
+                    <input type="date" id="data-inicio" name="data-inicio" required>
+                </div>
+
+                <div class="campo-formulario">
+                    <label for="data-fim">Data de Fim:</label>
+                    <input type="date" id="data-fim" name="data-fim">
+                </div>
+
+                <div class="campo-formulario">
+                    <label for="tipo-sanguineo">Tipos Sanguíneos Necessários (Opcional):</label>
+                    <input type="text" id="tipo-sanguineo" name="tipo-sanguineo" placeholder="Ex: O+, A-, Todos">
+                </div>
+                
+                <button type="submit" id="botao-cadastrar">Cadastrar Campanha</button>
+                
+                <div class="links-adicionais">
+                    <a href="index.html" class="link-voltar">Voltar para a Home</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer id="rodape">
+        <div class="secao-rodape">
+            <p>&copy; 2025 Doe Sangue Já. Todos os direitos reservados.</p>
+        </div>
+        <div class="secao-rodape">
+            <a href="#" class="link-social">
+                <!-- Ícone do Facebook -->
+                <img src="../assets/img/logo-facebook.png" alt="">
+            </a>
+            <a href="#" class="link-social">
+                <!-- Ícone do Instagram -->
+                <img src="../assets/img/logo-instagram.png" alt="">
+            </a>
+            <a href="#" class="link-social">
+                <!-- Ícone do Twitter -->
+                <img src="../assets/img/logo-twitter.png" alt="">
+            </a>
+        </div>
+    </footer>
+</body>
+</html>

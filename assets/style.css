@@ -980,4 +980,210 @@ main {
     animation: donor-slideIn 0.3s ease-out;
 }
 
-        
+ /* Estilos Gerais */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Fundo cinza claro */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Para organizar cabeçalho, conteúdo e rodapé */
+    min-height: 100vh;
+}
+
+/* Cabeçalho */
+#cabecalho {
+    background-color: #ffffff;
+    color: #c0392b;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.gota-de-sangue {
+    margin-right: 10px;
+    font-size: 28px;
+    height: 40px;
+    width: 40px;
+}
+
+#menu-navegacao a {
+    color: #c0392b;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+#menu-navegacao a:hover {
+    color: #e74c3c;
+}
+
+/* Rodapé */
+#rodape {
+    background-color: #333; /* Fundo escuro */
+    color: #f4f4f4;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto; /* Empurra o rodapé para o final da página */
+    font-size: 14px;
+}
+
+.secao-rodape {
+    display: flex;
+    align-items: center;
+}
+
+.link-social {
+    color: #f4f4f4;
+    text-decoration: none;
+    margin-left: 15px;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+.link-social:hover {
+    color: #e74c3c; /* Cor de destaque no hover */
+}
+
+/* Ajuste para o placeholder de ícone no rodapé */
+.secao-rodape .icone-placeholder {
+    font-size: 20px;
+    margin-right: 0;
+}
+
+/* NOVOS ESTILOS PARA O CONTEÚDO PRINCIPAL (CADASTRO DE CAMPANHA) */
+
+/* Container Principal */
+#container-principal {
+    flex-grow: 1;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinha o conteúdo ao topo do container */
+}
+
+/* Novo Container de Conteúdo (Substitui .caixa-formulario) */
+#container-cadastro {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Sombra mais proeminente */
+    width: 100%;
+    max-width: 700px; /* Aumenta a largura para o formulário de campanha */
+    text-align: left;
+}
+
+/* Título */
+.titulo-principal {
+    color: #c0392b;
+    margin-bottom: 25px;
+    font-size: 28px;
+    border-bottom: 2px solid #e74c3c;
+    padding-bottom: 10px;
+}
+
+/* Formulário */
+#formulario-campanha {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Layout em duas colunas */
+    gap: 20px;
+}
+
+/* Campos de Formulário */
+.campo-formulario {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Faz a descrição e o botão ocuparem a largura total */
+.campo-formulario.campo-full {
+    grid-column: 1 / -1;
+}
+
+.campo-formulario label {
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+}
+
+.campo-formulario input[type="text"],
+.campo-formulario input[type="date"],
+.campo-formulario textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.campo-formulario input:focus,
+.campo-formulario textarea:focus {
+    border-color: #c0392b;
+    outline: none;
+}
+
+/* Botão de Cadastro */
+#botao-cadastrar {
+    grid-column: 1 / -1; /* Ocupa as duas colunas */
+    background-color: #2ecc71; /* Verde para ação de "Cadastro" */
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+#botao-cadastrar:hover {
+    background-color: #27ae60;
+}
+
+/* Links Adicionais */
+.links-adicionais {
+    grid-column: 1 / -1;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.links-adicionais a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.links-adicionais a:hover {
+    text-decoration: underline;
+}
+
+/* Media Query para Responsividade */
+@media (max-width: 768px) {
+    #formulario-campanha {
+        grid-template-columns: 1fr; /* Uma coluna em telas menores */
+    }
+    .campo-formulario.campo-full {
+        grid-column: auto;
+    }
+    #botao-cadastrar {
+        grid-column: auto;
+    }
+    #container-cadastro {
+        max-width: 100%;
+        padding: 20px;
+    }
+}
+       
