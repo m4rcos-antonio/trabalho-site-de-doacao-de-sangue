@@ -1,3 +1,6 @@
+// ==========================
+// RECUPERAÇÃO DE SENHA
+// ==========================
 document.addEventListener('DOMContentLoaded', function() {
     const formulario = document.getElementById('formulario-recuperacao');
     const emailInput = document.getElementById('email');
@@ -6,276 +9,114 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (formulario) {
         formulario.addEventListener('submit', function(event) {
-            // 1. Impedir o comportamento padrão de envio do formulário
             event.preventDefault();
 
-            // Limpar mensagens anteriores
             mensagemStatus.textContent = '';
-            mensagemStatus.style.color = '';
             botaoEnviar.disabled = true;
             botaoEnviar.textContent = 'Enviando...';
 
-            // 2. Validação simples
             if (!emailInput.value || !emailInput.value.includes('@')) {
                 mensagemStatus.textContent = 'Por favor, insira um e-mail válido.';
-                mensagemStatus.style.color = '#e74c3c'; // Vermelho de erro
+                mensagemStatus.style.color = '#e74c3c';
                 botaoEnviar.disabled = false;
                 botaoEnviar.textContent = 'Enviar Instruções';
                 return;
             }
 
-            // 3. Simular o envio (sem chamar o banco de dados)
-            // Usamos um setTimeout para simular um atraso de rede
             setTimeout(function() {
-                // Simulação de sucesso
-                mensagemStatus.textContent = `Instruções de recuperação enviadas para ${emailInput.value}. Verifique sua caixa de entrada.`;
-                mensagemStatus.style.color = '#27ae60'; // Verde de sucesso
-                
-                // Opcional: Limpar o campo após o "envio"
+                mensagemStatus.textContent = `Instruções enviadas para ${emailInput.value}.`;
+                mensagemStatus.style.color = '#27ae60';
                 emailInput.value = '';
-
-                // Restaurar o botão
                 botaoEnviar.disabled = false;
                 botaoEnviar.textContent = 'Enviar Instruções';
-
-            }, 1500); // Simula um atraso de 1.5 segundos
+            }, 1500);
         });
     }
 });
-// Pegar o formulário
+
+// ==========================
+// CADASTRO DE DOADOR
+// ==========================
+
 const form = document.getElementById('formCadastroDonor');
 
-// Quando o formulário for enviado
-form.addEventListener('submit', function(event) {
-    event.preventDefault(); // Não recarregar a página
-    
-    // Pegar os valores dos campos
-    const nome = document.getElementById('fullName').value;
-    const cpf = document.getElementById('cpf').value;
-    const dataNascimento = document.getElementById('dateOfBirth').value;
-    const peso = document.getElementById('weight').value;
-    const tipoSanguineo = document.getElementById('bloodType').value;
-    const email = document.getElementById('email').value;
-    const telefone = document.getElementById('phone').value;
-    const endereco = document.getElementById('address').value;
-    const cidade = document.getElementById('city').value;
-    const estado = document.getElementById('state').value;
-    const cep = document.getElementById('zipCode').value;
-    
-    // Validar se todos os campos estão preenchidos
-    if (!nome || !cpf || !dataNascimento || !peso || !tipoSanguineo || !email || !telefone || !endereco || !cidade || !estado || !cep) {
-        alert('Por favor, preencha todos os campos!');
-        return;
-    }
-    
-    // Validar idade (mínimo 18 anos)
-    const dataNasc = new Date(dataNascimento);
-    const hoje = new Date();
-    let idade = hoje.getFullYear() - dataNasc.getFullYear();
-    const mesAtual = hoje.getMonth();
-    const mesNasc = dataNasc.getMonth();
-    
-    if (mesAtual < mesNasc || (mesAtual === mesNasc && hoje.getDate() < dataNasc.getDate())) {
-        idade--;
-    }
-    
-    if (idade < 18) {
-        alert('Você deve ter pelo menos 18 anos para doar sangue!');
-        return;
-    }
-    
-    // Validar peso (mínimo 50 kg)
-    if (peso < 50) {
-        alert('Peso mínimo para doação é 50 kg!');
-        return;
-    }
-    
-    // Validar email
-    if (!email.includes('@')) {
-        alert('Email inválido!');
-        return;
-    }
-    
-    // Validar CPF (básico)
-    if (cpf.length < 11) {
-        alert('CPF deve ter pelo menos 11 dígitos!');
-        return;
-    }
-    
-    // Se passou em todas as validações, salvar os dados
-    const doador = {
-        id: Date.now(),
-        nome: nome,
-        cpf: cpf,
-        dataNascimento: dataNascimento,
-        peso: peso,
-        tipoSanguineo: tipoSanguineo,
-        email: email,
-        telefone: telefone,
-        endereco: endereco,
-        cidade: cidade,
-        estado: estado,
-        cep: cep,
-        dataCadastro: new Date().toLocaleDateString('pt-BR')
-    };
-    
-    // Salvar no localStorage (armazenamento do navegador)
-    let doadores = JSON.parse(localStorage.getItem('doadores')) || [];
-    doadores.push(doador);
-    localStorage.setItem('doadores', JSON.stringify(doadores));
-    
-    // Mostrar mensagem de sucesso
-    alert('Doador cadastrado com sucesso!');
-    
-    // Limpar o formulário
-    form.reset();
-    
-    
-});
-document.addEventListener('DOMContentLoaded', function() {
-    const formulario = document.getElementById('formulario-recuperacao');
-    const emailInput = document.getElementById('email');
-    const mensagemStatus = document.getElementById('mensagem-status');
-    const botaoEnviar = document.getElementById('botao-enviar');
-
-    if (formulario) {
-        formulario.addEventListener('submit', function(event) {
-            // 1. Impedir o comportamento padrão de envio do formulário
-            event.preventDefault();
-
-            // Limpar mensagens anteriores
-            mensagemStatus.textContent = '';
-            mensagemStatus.style.color = '';
-            botaoEnviar.disabled = true;
-            botaoEnviar.textContent = 'Enviando...';
-
-            // 2. Validação simples
-            if (!emailInput.value || !emailInput.value.includes('@')) {
-                mensagemStatus.textContent = 'Por favor, insira um e-mail válido.';
-                mensagemStatus.style.color = '#e74c3c'; // Vermelho de erro
-                botaoEnviar.disabled = false;
-                botaoEnviar.textContent = 'Enviar Instruções';
-                return;
-            }
-
-            // 3. Simular o envio (sem chamar o banco de dados)
-            // Usamos um setTimeout para simular um atraso de rede
-            setTimeout(function() {
-                // Simulação de sucesso
-                mensagemStatus.textContent = `Instruções de recuperação enviadas para ${emailInput.value}. Verifique sua caixa de entrada.`;
-                mensagemStatus.style.color = '#27ae60'; // Verde de sucesso
-                
-                // Opcional: Limpar o campo após o "envio"
-                emailInput.value = '';
-
-                // Restaurar o botão
-                botaoEnviar.disabled = false;
-                botaoEnviar.textContent = 'Enviar Instruções';
-
-            }, 1500); // Simula um atraso de 1.5 segundos
-        });
-    }
-});
-
-// Quando o formulário for enviado
 if (form) {
     form.addEventListener('submit', function(event) {
-    event.preventDefault(); // Não recarregar a página
-    
-    // Pegar os valores dos campos
-    const nome = document.getElementById('fullName').value;
-    const cpf = document.getElementById('cpf').value;
-    const dataNascimento = document.getElementById('dateOfBirth').value;
-    const peso = document.getElementById('weight').value;
-    const tipoSanguineo = document.getElementById('bloodType').value;
-    const email = document.getElementById('email').value;
-    const telefone = document.getElementById('phone').value;
-    const endereco = document.getElementById('address').value;
-    const cidade = document.getElementById('city').value;
-    const estado = document.getElementById('state').value;
-    const cep = document.getElementById('zipCode').value;
-    
-    // Validar se todos os campos estão preenchidos
-    if (!nome || !cpf || !dataNascimento || !peso || !tipoSanguineo || !email || !telefone || !endereco || !cidade || !estado || !cep) {
-        alert('Por favor, preencha todos os campos!');
-        return;
-    }
-    
-    // Validar idade (mínimo 18 anos)
-    const dataNasc = new Date(dataNascimento);
-    const hoje = new Date();
-    let idade = hoje.getFullYear() - dataNasc.getFullYear();
-    const mesAtual = hoje.getMonth();
-    const mesNasc = dataNasc.getMonth();
-    
-    if (mesAtual < mesNasc || (mesAtual === mesNasc && hoje.getDate() < dataNasc.getDate())) {
-        idade--;
-    }
-    
-    if (idade < 18) {
-        alert('Você deve ter pelo menos 18 anos para doar sangue!');
-        return;
-    }
-    
-    // Validar peso (mínimo 50 kg)
-    if (peso < 50) {
-        alert('Peso mínimo para doação é 50 kg!');
-        return;
-    }
-    
-    // Validar email
-    if (!email.includes('@')) {
-        alert('Email inválido!');
-        return;
-    }
-    
-    // Validar CPF (básico)
-    if (cpf.length < 11) {
-        alert('CPF deve ter pelo menos 11 dígitos!');
-        return;
-    }
-    
-    // Se passou em todas as validações, salvar os dados
-    const doador = {
-        id: Date.now(),
-        nome: nome,
-        cpf: cpf,
-        dataNascimento: dataNascimento,
-        peso: peso,
-        tipoSanguineo: tipoSanguineo,
-        email: email,
-        telefone: telefone,
-        endereco: endereco,
-        cidade: cidade,
-        estado: estado,
-        cep: cep,
-        dataCadastro: new Date().toLocaleDateString('pt-BR')
-    };
-    
-    // Salvar no localStorage (armazenamento do navegador)
-    let doadores = JSON.parse(localStorage.getItem('doadores')) || [];
-    doadores.push(doador);
-    localStorage.setItem('doadores', JSON.stringify(doadores));
-    
-    // Mostrar mensagem de sucesso
-    alert('Doador cadastrado com sucesso!');
-    
-    // Limpar o formulário
-    form.reset();
-    
-    // Redirecionar para página de listagem (opcional)
-    // window.location.href = 'listar-doadores.html';
+        event.preventDefault();
+
+        const nome = document.getElementById('fullName').value;
+        const cpf = document.getElementById('cpf').value;
+        const dataNascimento = document.getElementById('dateOfBirth').value;
+        const peso = document.getElementById('weight').value;
+        const tipoSanguineo = document.getElementById('bloodType').value;
+        const email = document.getElementById('email').value;
+        const telefone = document.getElementById('phone').value;
+        const endereco = document.getElementById('address').value;
+        const cidade = document.getElementById('city').value;
+        const estado = document.getElementById('state').value;
+        const cep = document.getElementById('zipCode').value;
+
+        if (!nome || !cpf || !dataNascimento || !peso || !tipoSanguineo ||
+            !email || !telefone || !endereco || !cidade || !estado || !cep) {
+            alert('Por favor, preencha todos os campos!');
+            return;
+        }
+
+        const dataNasc = new Date(dataNascimento);
+        const hoje = new Date();
+        let idade = hoje.getFullYear() - dataNasc.getFullYear();
+
+        if (hoje.getMonth() < dataNasc.getMonth() ||
+            (hoje.getMonth() === dataNasc.getMonth() && hoje.getDate() < dataNasc.getDate())) {
+            idade--;
+        }
+
+        if (idade < 18) {
+            alert('Você deve ter pelo menos 18 anos para doar sangue!');
+            return;
+        }
+
+        if (peso < 50) {
+            alert('Peso mínimo para doação é 50 kg!');
+            return;
+        }
+
+        if (!email.includes('@')) {
+            alert('Email inválido!');
+            return;
+        }
+
+        if (cpf.length < 11) {
+            alert('CPF inválido!');
+            return;
+        }
+
+        const doador = {
+            id: Date.now(),
+            nome, cpf, dataNascimento, peso, tipoSanguineo,
+            email, telefone, endereco, cidade, estado, cep,
+            dataCadastro: new Date().toLocaleDateString('pt-BR')
+        };
+
+        let doadores = JSON.parse(localStorage.getItem('doadores')) || [];
+        doadores.push(doador);
+        localStorage.setItem('doadores', JSON.stringify(doadores));
+
+        alert('Doador cadastrado com sucesso!');
+        form.reset();
     });
 }
 
-// Lógica para o formulário de Cadastro de Hemocentro
+// ==========================
+// CADASTRO DE HEMOCENTRO
+// ==========================
+
 const formHemocentro = document.getElementById('formCadastroHemocentro');
 
 if (formHemocentro) {
     formHemocentro.addEventListener('submit', function(event) {
-        event.preventDefault(); // Não recarregar a página
-        
-        // Pegar os valores dos campos
+        event.preventDefault();
+
         const nome = document.getElementById('nomeHemocentro').value;
         const cnpj = document.getElementById('cnpj').value;
         const telefone = document.getElementById('telefone').value;
@@ -286,68 +127,128 @@ if (formHemocentro) {
         const complemento = document.getElementById('complemento').value;
         const cidade = document.getElementById('cidade').value;
         const estado = document.getElementById('estado').value;
-        
-        // Validar se os campos obrigatórios estão preenchidos
+
         if (!nome || !cnpj || !telefone || !cep || !logradouro || !numero || !bairro || !cidade || !estado) {
-            alert('Por favor, preencha todos os campos obrigatórios (*)!');
-            return;
-        }
-        
-        // Validação básica de CNPJ (apenas tamanho)
-        if (cnpj.length < 14) {
-            alert('CNPJ inválido. Deve ter pelo menos 14 dígitos (sem formatação) ou 18 caracteres (com formatação).');
+            alert('Por favor, preencha os campos obrigatórios!');
             return;
         }
 
-        // Validação básica de CEP (apenas tamanho)
-        if (cep.length < 8) {
-            alert('CEP inválido. Deve ter pelo menos 8 dígitos (sem formatação) ou 9 caracteres (com formatação).');
+        if (cnpj.length < 14) {
+            alert('CNPJ inválido!');
             return;
         }
-        
-        // Se passou em todas as validações, salvar os dados
+
+        if (cep.length < 8) {
+            alert('CEP inválido!');
+            return;
+        }
+
         const hemocentro = {
             id: Date.now(),
-            nome: nome,
-            cnpj: cnpj,
-            telefone: telefone,
-            cep: cep,
-            logradouro: logradouro,
-            numero: numero,
-            bairro: bairro,
-            complemento: complemento,
-            cidade: cidade,
-            estado: estado,
+            nome, cnpj, telefone, cep, logradouro, numero, bairro,
+            complemento, cidade, estado,
             dataCadastro: new Date().toLocaleDateString('pt-BR')
         };
-        
-        // Salvar no localStorage (armazenamento do navegador)
+
         let hemocentros = JSON.parse(localStorage.getItem('hemocentros')) || [];
         hemocentros.push(hemocentro);
         localStorage.setItem('hemocentros', JSON.stringify(hemocentros));
-        
-        // Mostrar mensagem de sucesso
+
         alert('Hemocentro cadastrado com sucesso!');
-        
-        // Limpar o formulário
         formHemocentro.reset();
-        
-        // Redirecionar para página de listagem (opcional)
-        // window.location.href = 'listar_centros.html';
     });
 }
 
-// Função de navegação para os cards do dashboard
+// ==========================
+// MAPA — SOMENTE SE EXISTIR O ELEMENTO #mapa
+// ==========================
+
+if (document.getElementById('mapa')) {
+
+    var mapa = L.map('mapa').setView([-22.12, -51.39], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19
+    }).addTo(mapa);
+
+    let listaHemocentros = [];
+
+    fetch("hemocentros.json")
+        .then(r => r.json())
+        .then(dados => {
+            listaHemocentros = dados;
+
+            let select = document.getElementById("listaHemocentros");
+
+            if (select) {
+                dados.forEach((h, index) => {
+                    let option = document.createElement("option");
+                    option.value = index;
+                    option.textContent = h.nome;
+                    select.appendChild(option);
+                });
+            }
+
+            dados.forEach(h => {
+                L.marker([h.lat, h.lng])
+                    .addTo(mapa)
+                    .bindPopup("<b>" + h.nome + "</b><br>" + h.endereco);
+            });
+        });
+
+    window.mostrarSelecionado = function() {
+        let index = document.getElementById("listaHemocentros").value;
+        if (index === "") return;
+
+        let h = listaHemocentros[index];
+
+        mapa.setView([h.lat, h.lng], 16);
+
+        L.marker([h.lat, h.lng])
+            .addTo(mapa)
+            .bindPopup("<b>" + h.nome + "</b><br>" + h.endereco)
+            .openPopup();
+    };
+
+    window.buscarEndereco = function() {
+        let endereco = document.getElementById("endereco").value;
+
+        if (endereco.trim() === "") {
+            alert("Digite um endereço!");
+            return;
+        }
+
+        let url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(endereco)}`;
+
+        fetch(url)
+            .then(r => r.json())
+            .then(dados => {
+                if (dados.length === 0) {
+                    alert("Endereço não encontrado.");
+                    return;
+                }
+
+                let lat = dados[0].lat;
+                let lon = dados[0].lon;
+
+                mapa.setView([lat, lon], 16);
+
+                L.marker([lat, lon])
+                    .addTo(mapa)
+                    .bindPopup("Local encontrado:<br>" + endereco)
+                    .openPopup();
+            });
+    };
+}
+
+// ==========================
+// Funções gerais
+// ==========================
 function navigateTo(page) {
     window.location.href = page;
 }
 
-// Função de logout (necessária para o botão Sair no header)
 function logout() {
-    // Aqui você adicionaria a lógica de limpeza de sessão (ex: localStorage.removeItem('token'))
     alert('Saindo do sistema...');
-    window.location.href = 'login.html'; // Redireciona para a tela de login
+    window.location.href = 'login.html';
 }
-
-
-

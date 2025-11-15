@@ -1,0 +1,20 @@
+[
+    {
+        "nome": "Hemocentro de Presidente Prudente – Hemocentro Regional",
+        "endereco": "Rua José Bongiovani, 1297 - Vila Liberdade, Presidente Prudente - SP",
+        "lat": -22.1261205,
+        "lng": -51.4085205
+    },
+    {
+        "nome": "Núcleo de Hemoterapia da Santa Casa de Presidente Prudente",
+        "endereco": "Av. Brasil, 111 - Vila Euclides, Presidente Prudente - SP",
+        "lat": -22.1272717,
+        "lng": -51.3955535
+    },
+    {
+        "nome": "Unidade de Coleta – Banco de Sangue Hospital HR",
+        "endereco": "Rua Roberto Simonsen, 305 - Centro, Presidente Prudente - SP",
+        "lat": -22.1211003,
+        "lng": -51.3925011
+    }
+]

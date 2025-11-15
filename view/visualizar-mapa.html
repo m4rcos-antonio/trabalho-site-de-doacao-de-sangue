@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Mapa de Hemocentros</title>
+    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="stylesheet" 
+          href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+
+<header id="cabecalho">
+    <div class="logo">
+        <img src="../assets/img/gota-de-sangue.png" class="gota-de-sangue">
+        <span class="nome-site">Doe Sangue Já</span>
+    </div>
+    <nav id="menu-navegacao">
+        <a href="index.html" class="link-menu">Início</a>
+        <a href="#" class="link-menu">Sobre</a>
+        <a href="#" class="link-menu">Contato</a>
+    </nav>
+</header>
+
+<main>
+    <div class="mapa-container">
+
+        <h2 style="text-align:center; color:#c0392b;">Mapa de Hemocentros</h2>
+
+        <!-- SELECT para escolher hemocentros -->
+        <div class="seletor-hemocentro">
+            <select id="listaHemocentros" onchange="mostrarSelecionado()">
+                <option value="">Selecione um hemocentro...</option>
+            </select>
+        </div>
+
+        <div id="mapa"></div>
+
+    </div>
+</main>
+
+<footer id="rodape">
+    <div class="secao-rodape">
+        <p>&copy; 2025 Doe Sangue Já. Todos os direitos reservados.</p>
+    </div>
+    <div class="secao-rodape">
+        <a href="#" class="link-social"><img src="../assets/img/logo-facebook.png"></a>
+        <a href="#" class="link-social"><img src="../assets/img/logo-instagram.png"></a>
+        <a href="#" class="link-social"><img src="../assets/img/logo-twitter.png"></a>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="../assets/script.js"></script>
+
+</body>
+</html>
