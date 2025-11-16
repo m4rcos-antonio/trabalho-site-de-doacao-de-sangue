@@ -1286,3 +1286,20 @@ body {
 .busca-endereco button:hover {
     background-color: #e74c3c;
 }
+
+
+.endereco-reminder {
+    font-size: 0.85em; /* Fonte menor para ser um lembrete */
+    color: #c0392b;   /* Cor vermelha/alerta (usa a cor principal do site) */
+    margin-top: -10px; /* Puxa o texto para perto do input do Endereço */
+    margin-bottom: 15px; /* Adiciona espaço antes do próximo campo */
+    padding-left: 5px;
+    background-color: #ffe0e0; /* Fundo suave para destacar */
+    border-left: 3px solid #c0392b;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.endereco-reminder strong {
+    font-weight: 700;
+}

@@ -1,3 +1,7 @@
+<?php
+require_once __DIR__ . '/../config/config.php';
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -20,17 +24,16 @@
 
             <div class="donor-card-content">
                 <form id="formCadastroHemocentro" class="donor-form">
-                    <!-- Dados do Hemocentro -->
                     <div class="donor-form-section">
                         <h3 class="donor-section-title">Informações Básicas</h3>
                         
                         <div class="donor-form-group">
                             <label for="nomeHemocentro">Nome do Hemocentro *</label>
                             <input 
-                                type="text" 
-                                id="nomeHemocentro" 
-                                name="nomeHemocentro" 
-                                placeholder="Ex: Hemocentro São Lucas"
+                                type="text"
+                                id="nomeHemocentro"
+                                name="nomeHemocentro"
+                                placeholder="Nome completo do Hemocentro"
                                 required
                             >
                         </div>
@@ -39,68 +42,67 @@
                             <div class="donor-form-group">
                                 <label for="cnpj">CNPJ *</label>
                                 <input 
-                                    type="text" 
-                                    id="cnpj" 
-                                    name="cnpj" 
+                                    type="text"
+                                    id="cnpj"
+                                    name="cnpj"
                                     placeholder="00.000.000/0000-00"
-                                    maxlength="18"
                                     required
                                 >
                             </div>
-
                             <div class="donor-form-group">
                                 <label for="telefone">Telefone *</label>
                                 <input 
-                                    type="tel" 
-                                    id="telefone" 
-                                    name="telefone" 
-                                    placeholder="(XX) XXXX-XXXX"
+                                    type="tel"
+                                    id="telefone"
+                                    name="telefone"
+                                    placeholder="(99) 99999-9999"
                                     required
                                 >
                             </div>
                         </div>
                     </div>
 
-                    <!-- Endereço -->
                     <div class="donor-form-section">
                         <h3 class="donor-section-title">Endereço</h3>
                         
-                        <div class="donor-form-group">
-                            <label for="cep">CEP *</label>
-                            <input 
-                                type="text" 
-                                id="cep" 
-                                name="cep" 
-                                placeholder="00000-000"
-                                maxlength="9"
-                                required
-                            >
+                        <div class="donor-form-row">
+                            <div class="donor-form-group">
+                                <label for="cep">CEP *</label>
+                                <input 
+                                    type="text"
+                                    id="cep"
+                                    name="cep"
+                                    placeholder="00000-000"
+                                    required
+                                >
+                            </div>
                         </div>
 
                         <div class="donor-form-group">
-                            <label for="logradouro">Endereço</label>
+                            <label for="logradouro">Endereço *</label>
                             <input 
-                                type="text" 
-                                id="logradouro" 
-                                name="logradouro" 
-                                placeholder="Rua Exemplo"
+                                type="text"
+                                id="logradouro"
+                                name="logradouro"
+                                placeholder="Rua/Avenida"
                                 required
                             >
+                            <p class="endereco-reminder">
+                                <span class="emoji">⚠️</span> <strong>IMPORTANTE:</strong> Para a localização funcionar, inclua o <strong>número do local</strong> logo após o nome da rua (Ex: Rua A, 123).
+                            </p>
                         </div>
-
 
                         <div class="donor-form-row">
                             <div class="donor-form-group">
                                 <label for="cidade">Cidade *</label>
                                 <input 
-                                    type="text" 
-                                    id="cidade" 
-                                    name="cidade" 
-                                    placeholder="São Paulo"
+                                    type="text"
+                                    id="cidade"
+                                    name="cidade"
+                                    placeholder="Cidade"
                                     required
                                 >
                             </div>
-
                             <div class="donor-form-group">
                                 <label for="estado">Estado *</label>
                                 <select id="estado" name="estado" required>
@@ -137,17 +139,15 @@
                         </div>
                     </div>
 
-                    <!-- Botões -->
                     <div class="donor-form-actions">
                         <button type="submit" class="donor-btn donor-btn-primary">Cadastrar Hemocentro</button>
-                        <a href="listar_centros.html" class="donor-btn donor-btn-secondary">Ver Hemocentros</a>
+                        <a href="visualizar-mapa.html" class="donor-btn donor-btn-secondary">Ver Hemocentros</a>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 
-    <!-- O script específico para hemocentros deve ser criado e linkado aqui -->
     <script src="../assets/script.js"></script>
 </body>
 </html>
