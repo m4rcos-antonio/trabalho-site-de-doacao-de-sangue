@@ -1,95 +1,122 @@
 <?php
-require_once __DIR__ . '/../config/config.php'; 
+require_once __DIR__ . '/../config/config.php';
 
 header("Content-Type: application/json; charset=utf-8");
 
-// Verifica se o método de requisição é POST
+// --------------------------------------------------------
+// VERIFICAÇÃO DO MÉTODO
+// --------------------------------------------------------
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     http_response_code(405);
-    echo json_encode(["success" => false, "message" => "Método não permitido."], JSON_UNESCAPED_UNICODE);
+    echo json_encode(["success" => false, "message" => "Método não permitido."]);
     exit;
 }
 
-// Coleta de dados do formulário
-$nome = $_POST["nomeHemocentro"] ?? "";
-$cnpj = $_POST["cnpj"] ?? "";
-$telefone = $_POST["telefone"] ?? "";
-$cep = $_POST["cep"] ?? "";
+// --------------------------------------------------------
+// RECEBENDO DADOS DO FORM
+// --------------------------------------------------------
+$nome       = $_POST["nomeHemocentro"] ?? "";
+$cnpj       = $_POST["cnpj"] ?? "";
+$telefone   = $_POST["telefone"] ?? "";
+$cep        = $_POST["cep"] ?? "";
 $logradouro = $_POST["logradouro"] ?? "";
-$cidade = $_POST["cidade"] ?? "";
-$estado = $_POST["estado"] ?? "";
+$cidade     = $_POST["cidade"] ?? "";
+$estado     = $_POST["estado"] ?? "";
 
-// Validação básica de campos obrigatórios
-if (empty($nome) || empty($cnpj) || empty($telefone) || empty($cep) || empty($logradouro) || empty($cidade) || empty($estado)) {
+// --------------------------------------------------------
+// VALIDAÇÃO BÁSICA
+// --------------------------------------------------------
+if (empty($nome) || empty($cnpj) || empty($telefone) ||
+    empty($cep) || empty($logradouro) || empty($cidade) || empty($estado)) {
+
     http_response_code(400);
-    echo json_encode(["success" => false, "message" => "Preencha todos os campos obrigatórios."], JSON_UNESCAPED_UNICODE);
+    echo json_encode(["success" => false, "message" => "Preencha todos os campos obrigatórios."]);
     exit;
 }
 
-// ==========================
-// Lógica de Geocodificação (Nominatim) no PHP
-// ==========================
-// Monta o endereço completo para a consulta
+// --------------------------------------------------------
+// CORREÇÃO AUTOMÁTICA DO NOME DA RUA (OSM BUG)
+// --------------------------------------------------------
+$logradouro_original = $logradouro; // salvar no banco do jeito certo
+
+if (
+    stripos($logradouro, "Felício Luizari") !== false ||
+    stripos($logradouro, "Luizari") !== false
+) {
+    $logradouro = "Rua Luzari"; // nome reconhecido pela API
+}
+
+// --------------------------------------------------------
+// GEOCODIFICAÇÃO — MAPS.CO
+// --------------------------------------------------------
 $enderecoCompleto = "$logradouro, $cidade, $estado, $cep, Brasil";
 
-$url = "https://nominatim.openstreetmap.org/search?format=json&q=" . urlencode($enderecoCompleto);
+$apiKey = "691a4a2eb42ef970866722fmg541811"; // <-- substitua pela sua chave
+$url = "https://geocode.maps.co/search?q=" . urlencode($enderecoCompleto) . "&api_key=" . $apiKey;
 
-// Configuração do User-Agent (Obrigatório para Nominatim)
-$context = stream_context_create([
-    'http' => [
-        // Mantenha seu User-Agent para evitar bloqueio do Nominatim
-        'header' => "User-Agent: DoeSangueJa_App/1.0 (seu.email@exemplo.com)\r\n" 
-    ]
+// Chamada CURL
+$ch = curl_init();
+curl_setopt_array($ch, [
+    CURLOPT_URL => $url,
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_USERAGENT => "DoeSangueJa_App/1.0"
 ]);
 
-// @ suprime erro caso a chamada falhe (ex: sem internet)
-$dadosJson = @file_get_contents($url, false, $context);
+$dadosJson = curl_exec($ch);
+$erroCurl = curl_error($ch);
+$statusCode = curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
+curl_close($ch);
 
-$lat = null;
-$lng = null;
-
-if ($dadosJson !== false) {
-    $dadosGeo = json_decode($dadosJson, true);
-    // Tenta obter as coordenadas
-    $lat = $dadosGeo[0]["lat"] ?? null;
-    $lng = $dadosGeo[0]["lon"] ?? null;
-}
-
-// Se a geocodificação falhar, retorna um erro em vez de usar uma coordenada fixa
-if (empty($lat) || empty($lng)) {
-    http_response_code(422); 
-    echo json_encode(["success" => false, "message" => "Não foi possível encontrar as coordenadas geográficas para este endereço. Verifique os dados."], JSON_UNESCAPED_UNICODE);
+if ($erroCurl) {
+    http_response_code(500);
+    echo json_encode(["success" => false, "message" => "Erro na consulta: $erroCurl"]);
     exit;
 }
 
+$dadosGeo = json_decode($dadosJson, true);
 
-// ==========================
-// Inserção no Banco de Dados (PDO)
-// ==========================
+// --------------------------------------------------------
+// VALIDAÇÃO DO RESULTADO DE GEOLOCALIZAÇÃO
+// --------------------------------------------------------
+if (!is_array($dadosGeo) || count($dadosGeo) === 0) {
+    http_response_code(422);
+    echo json_encode(["success" => false, "message" => "Não foi possível encontrar as coordenadas deste endereço."]);
+    exit;
+}
+
+$lat = $dadosGeo[0]["lat"] ?? null;
+$lng = $dadosGeo[0]["lon"] ?? null;
+
+if (!$lat || !$lng) {
+    http_response_code(422);
+    echo json_encode(["success" => false, "message" => "Coordenadas inválidas retornadas pela API."]);
+    exit;
+}
+
+// --------------------------------------------------------
+// INSERÇÃO NO BANCO DE DADOS
+// --------------------------------------------------------
 $sql = "INSERT INTO hemocentros (nome, cnpj, telefone, cep, endereco, cidade, estado, lat, lng)
         VALUES (:nome, :cnpj, :telefone, :cep, :endereco, :cidade, :estado, :lat, :lng)";
 
 try {
-    $stmt = $pdo->prepare($sql); 
-    
-    $stmt->bindValue(':nome', $nome);
-    $stmt->bindValue(':cnpj', $cnpj);
-    $stmt->bindValue(':telefone', $telefone);
-    $stmt->bindValue(':cep', $cep);
-    $stmt->bindValue(':endereco', $logradouro);
-    $stmt->bindValue(':cidade', $cidade);
-    $stmt->bindValue(':estado', $estado);
-    $stmt->bindValue(':lat', $lat);
-    $stmt->bindValue(':lng', $lng);
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([
+        ":nome"     => $nome,
+        ":cnpj"     => $cnpj,
+        ":telefone" => $telefone,
+        ":cep"      => $cep,
+        ":endereco" => $logradouro_original, // salva o correto
+        ":cidade"   => $cidade,
+        ":estado"   => $estado,
+        ":lat"      => $lat,
+        ":lng"      => $lng
+    ]);
 
-    $stmt->execute();
+    echo json_encode(["success" => true, "message" => "Hemocentro cadastrado com sucesso!"]);
 
-    http_response_code(201);
-    //Retorna resposta padronizada para o JavaScript
-    echo json_encode(["success" => true, "message" => "Hemocentro cadastrado com sucesso!"], JSON_UNESCAPED_UNICODE);
-    
 } catch (PDOException $e) {
     http_response_code(500);
-    echo json_encode(["success" => false, "message" => "Erro ao cadastrar: " . $e->getMessage()], JSON_UNESCAPED_UNICODE);
+    echo json_encode(["success" => false, "message" => "Erro ao cadastrar: " . $e->getMessage()]);
 }
 ?>
