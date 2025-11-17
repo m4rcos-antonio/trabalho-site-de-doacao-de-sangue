@@ -1,38 +1,41 @@
-// ==========================
-// RECUPERAÇÃO DE SENHA
-// ==========================
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const formulario = document.getElementById('formulario-recuperacao');
     const emailInput = document.getElementById('email');
-    const mensagemStatus = document.getElementById('mensagem-status');
     const botaoEnviar = document.getElementById('botao-enviar');
 
     if (formulario) {
-        formulario.addEventListener('submit', function(event) {
+        formulario.addEventListener('submit', function (event) {
             event.preventDefault();
 
-            mensagemStatus.textContent = '';
             botaoEnviar.disabled = true;
             botaoEnviar.textContent = 'Enviando...';
 
-            if (!emailInput.value || !emailInput.value.includes('@')) {
-                mensagemStatus.textContent = 'Por favor, insira um e-mail válido.';
-                mensagemStatus.style.color = '#e74c3c';
-                botaoEnviar.disabled = false;
-                botaoEnviar.textContent = 'Enviar Instruções';
-                return;
-            }
+            const formData = new FormData();
+            formData.append('email', emailInput.value);
 
-            setTimeout(function() {
-                mensagemStatus.textContent = `Instruções enviadas para ${emailInput.value}.`;
-                mensagemStatus.style.color = '#27ae60';
-                emailInput.value = '';
+            fetch('../api/esqueci.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(r => r.json())
+            .then(data => {
+                if (data.success) {
+                    alert("Link para redefinir senha:\n\n" + data.link);
+                } else {
+                    alert("Erro: " + data.message);
+                }
+            })
+            .catch(() => {
+                alert("Erro ao se comunicar com o servidor.");
+            })
+            .finally(() => {
                 botaoEnviar.disabled = false;
                 botaoEnviar.textContent = 'Enviar Instruções';
-            }, 1500);
+            });
         });
     }
 });
+
 
 
 // ==========================

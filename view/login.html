@@ -23,25 +23,25 @@
         <div id="caixa-login">
             <h1 class="titulo-principal">Acesso do Doador</h1>
             
-            <form id="formulario-login">
-                <div class="campo-formulario">
-                    <label for="email">E-mail:</label>
-                    <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com" required>
-                </div>
-                
-                <div class="campo-formulario">
-                    <label for="senha">Senha:</label>
-                    <input type="password" id="senha" name="senha" placeholder="********" required>
-                </div>
-                
-                <button type="submit" id="botao-entrar">Entrar</button>
-                
-                
-                <div class="links-adicionais">
-                    <a href="esqueci-senha.html" class="link-recuperar-senha">Esqueci minha senha</a>
-                    <a href="cadastro.html" class="link-cadastro">Ainda não sou doador? Cadastre-se</a>
-                </div>
-            </form>
+                <form id="formulario-login" method="POST" action="../api/login.php">
+                    <div class="campo-formulario">
+                        <label for="email">E-mail:</label>
+                        <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com" required>
+                    </div>
+                    
+                    <div class="campo-formulario">
+                        <label for="senha">Senha:</label>
+                        <input type="password" id="senha" name="senha" placeholder="********" required>
+                    </div>
+                    
+                    <button type="submit" id="botao-entrar">Entrar</button>
+
+                    <div class="links-adicionais">
+                        <a href="esqueci-senha.html" class="link-recuperar-senha">Esqueci minha senha</a>
+                        <a href="cadastro.html" class="link-cadastro">Ainda não sou doador? Cadastre-se</a>
+                    </div>
+                </form>
+
         </div>
     </div>
 

@@ -24,7 +24,7 @@ require_once __DIR__ . '/../config/config.php';
     </header>
     <div class="donor-container">
         <div class="donor-back-link">
-            <a href="home.html">← Voltar para o Dashboard</a>
+            <a href="home.html">← Voltar para o Menu</a>
         </div>
 
         <div class="donor-card">

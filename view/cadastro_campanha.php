@@ -35,7 +35,7 @@ $hemocentros = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="header-right">
             <div class="user-info">
                 <div class="user-greeting">Bem-vindo,</div>
-                <a href="conta_usuario.php" class="user-name-link">
+                <a href="visualizar-conta.php" class="user-name-link">
                     <div class="user-name" id="userName"><?php echo htmlspecialchars($nome_usuario); ?></div>
                 </a>
             </div>
@@ -47,7 +47,7 @@ $hemocentros = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div id="caixa-login" class="form-card"> 
             <h1 class="titulo-principal">Cadastrar Nova Campanha</h1>
             
-            <form id="formulario-campanha" action="../api/processa_campanha.php" method="POST">
+            <form id="formulario-campanha" action="../api/processo_campanha.php" method="POST">
                 
                 <div class="campo-formulario">
                     <label for="nome-campanha">Nome da Campanha:</label>
@@ -56,7 +56,7 @@ $hemocentros = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 <div class="campo-formulario">
                     <label for="hemocentro-id">Hemocentro Responsável:</label>
-                    <select id="hemocentro-id" name="hemocentro-id" required>
+                    <select id="hemocentro-id" name="id_hemocentro" required>
                         <option value="" disabled selected>Selecione um Hemocentro</option>
                         <?php foreach ($hemocentros as $hemocentro): ?>
                             <option value="<?php echo $hemocentro['id']; ?>">
@@ -85,7 +85,7 @@ $hemocentros = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <div class="campo-formulario full-width">
                     <label for="tipo-sanguineo">Tipos Sanguíneos Necessários (Opcional):</label>
                     
-                    <select id="tipo-sanguineo" name="tipos_sanguineos[]" multiple>
+                    <select id="tipos-sanguineos" name="tipos_sanguineos[]" multiple required>
                         <option value="" disabled selected>Selecione (Ctrl+Clique para múltiplos)</option>
                         <option value="O+">O Positivo (O+)</option>
                         <option value="O-">O Negativo (O-)</option>
@@ -98,13 +98,10 @@ $hemocentros = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </select>
                 </div>
                 
-                <div class="campo-formulario full-width">
-                    <button type="submit" id="botao-cadastrar">Cadastrar Campanha</button>
-                </div>
+                <div class="donor-form-actions">
+                        <button type="submit" class="donor-btn donor-btn-primary">Cadastrar Campanha</button>
+                    </div>>
                 
-                <div class="links-adicionais full-width">
-                    <a href="home.php" class="link-voltar">← Voltar para o Dashboard</a> 
-                </div>
             </form>
         </div>
     </main>

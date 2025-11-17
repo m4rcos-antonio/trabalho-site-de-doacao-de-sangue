@@ -1303,3 +1303,637 @@ body {
 .endereco-reminder strong {
     font-weight: 700;
 }
+
+/* ==========================
+   ESTILO PARA VISUALIZAR-CONTA
+   ========================== */
+
+.conta-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    animation: fadeIn 0.3s ease;
+}
+
+/* Botão voltar */
+.conta-voltar {
+    margin-bottom: 15px;
+}
+
+.conta-voltar a {
+    text-decoration: none;
+    color: #c0392b;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.conta-voltar a:hover {
+    color: #e74c3c;
+}
+
+/* Cabeçalho */
+.conta-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.conta-header h1 {
+    color: #c0392b;
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+.conta-header p {
+    color: #555;
+}
+
+/* Seção de Perfil */
+.conta-profile {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #eee;
+}
+
+.conta-avatar {
+    width: 90px;
+    height: 90px;
+    background: #c0392b;
+    color: white;
+    font-size: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.conta-profile-info h2 {
+    margin: 0;
+    font-size: 22px;
+    color: #333;
+}
+
+.conta-profile-info p {
+    color: #777;
+}
+
+/* Títulos das seções */
+.conta-section {
+    margin-bottom: 30px;
+}
+
+.conta-section h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #c0392b;
+    margin-bottom: 15px;
+    border-left: 4px solid #e74c3c;
+    padding-left: 10px;
+}
+
+/* Grade para informações */
+.conta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.conta-grid .conta-item {
+    padding: 15px;
+    background: #fafafa;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.conta-item label {
+    color: #555;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.conta-item p {
+    margin-top: 5px;
+    color: #222;
+}
+
+/* Campos largura total */
+.conta-full {
+    grid-column: 1 / -1;
+}
+
+/* Estilo do tipo sanguíneo */
+.conta-blood {
+    font-size: 22px;
+    color: #c0392b;
+    font-weight: bold;
+}
+
+/* Seção de ações */
+.conta-actions {
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+}
+
+.conta-btn {
+    flex: 1;
+    padding: 12px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.conta-btn-sec {
+    background: #bdc3c7;
+    color: white;
+}
+
+.conta-btn-sec:hover {
+    background: #95a5a6;
+}
+
+.conta-btn-danger {
+    background: #e74c3c;
+    color: white;
+}
+
+.conta-btn-danger:hover {
+    background: #c0392b;
+}
+
+/* Mensagem "sem cadastro" */
+.conta-no-data {
+    padding: 20px;
+    background: #fff4f4;
+    border-left: 4px solid #e74c3c;
+    color: #c0392b;
+    font-size: 16px;
+    border-radius: 8px;
+}
+
+/* Animação */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsividade */
+@media (max-width: 700px) {
+    .conta-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .conta-profile {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .conta-avatar {
+        width: 70px;
+        height: 70px;
+        font-size: 32px;
+    }
+}
+
+/* ==========================
+   ESTILO PARA VISUALIZAR-CONTA
+   (Adicionado ao final do style.css)
+   ========================== */
+
+/* Estilo isolado para o body da página conta */
+.conta-page {
+    /* Garante que o body use um fundo suave, se o estilo geral não o fizer */
+    background: #f4f4f4; 
+    min-height: 100vh;
+}
+
+.conta-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    animation: fadeIn 0.3s ease;
+}
+
+/* Botão voltar */
+.conta-voltar {
+    margin-bottom: 15px;
+}
+
+.conta-voltar a {
+    text-decoration: none;
+    color: #c0392b;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.conta-voltar a:hover {
+    color: #e74c3c;
+}
+
+/* Cabeçalho */
+.conta-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.conta-header h1 {
+    color: #c0392b;
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+.conta-header p {
+    color: #555;
+}
+
+/* Seção de Perfil */
+.conta-profile {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #eee;
+}
+
+.conta-avatar {
+    width: 90px;
+    height: 90px;
+    background: #c0392b;
+    color: white;
+    font-size: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0; /* Evita que o avatar encolha */
+}
+
+.conta-profile-info h2 {
+    margin: 0;
+    font-size: 22px;
+    color: #333;
+}
+
+.conta-profile-info p {
+    color: #777;
+}
+
+/* Títulos das seções */
+.conta-section {
+    margin-bottom: 30px;
+}
+
+.conta-section h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #c0392b;
+    margin-bottom: 15px;
+    border-left: 4px solid #e74c3c;
+    padding-left: 10px;
+}
+
+/* Grade para informações */
+.conta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsividade embutida */
+    gap: 15px;
+}
+
+.conta-grid .conta-item {
+    padding: 15px;
+    background: #fafafa;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.conta-item label {
+    color: #555;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.conta-item p {
+    margin-top: 5px;
+    color: #222;
+    word-wrap: break-word; /* Garante que o texto longo não vaze */
+}
+
+/* Campos largura total */
+.conta-full {
+    grid-column: 1 / -1;
+}
+
+/* Estilo do tipo sanguíneo e total de doações */
+.conta-blood {
+    font-size: 22px;
+    color: #c0392b;
+    font-weight: bold;
+}
+
+/* Seção de ações */
+.conta-actions {
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+}
+
+.conta-btn {
+    flex: 1;
+    padding: 12px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    border: none;
+    display: block; /* Para o botão do formulário */
+}
+
+.conta-btn-sec {
+    background: #bdc3c7;
+    color: white;
+}
+
+.conta-btn-sec:hover {
+    background: #95a5a6;
+}
+
+.conta-btn-danger {
+    background: #e74c3c;
+    color: white;
+}
+
+.conta-btn-danger:hover {
+    background: #c0392b;
+}
+
+/* Mensagem "sem cadastro" (não usada, mas mantida) */
+.conta-no-data {
+    padding: 20px;
+    background: #fff4f4;
+    border-left: 4px solid #e74c3c;
+    color: #c0392b;
+    font-size: 16px;
+    border-radius: 8px;
+}
+
+/* Animação */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsividade */
+@media (max-width: 700px) {
+    .conta-grid {
+        /* Garante 1 coluna em telas menores */
+        grid-template-columns: 1fr; 
+    }
+    
+    .conta-item.conta-full {
+        grid-column: auto;
+    }
+
+    .conta-profile {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .conta-avatar {
+        width: 70px;
+        height: 70px;
+        font-size: 32px;
+    }
+    
+    .conta-container {
+        margin: 20px;
+        padding: 20px;
+    }
+    
+    .conta-actions {
+        flex-direction: column;
+    }
+}
+
+/* Ajuste para o container principal (para que ocupe a largura total da main) */
+#container-principal {
+    /* O style.css principal define max-width: 400px; e centraliza */
+    /* Para a página de campanhas, precisamos de mais espaço */
+    max-width: 1200px !important; 
+    align-items: flex-start !important; /* Alinha o conteúdo ao topo */
+    margin: 0 auto !important; /* Centraliza */
+    padding: 20px !important;
+}
+
+.campanhas-container {
+    width: 100%;
+    /* Removido max-width: 1000px; e margin: 40px auto; pois o #container-principal já faz isso */
+}
+
+/* ===== Header (Ajustado para usar classes do style.css) ===== */
+.campanhas-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.campanhas-header h1 {
+    font-size: 32px;
+    color: var(--campanhas-primary-color); /* Usando a cor principal do projeto */
+    margin-bottom: 10px;
+}
+
+.campanhas-header p {
+    font-size: 16px;
+    color: var(--campanhas-text-light);
+}
+
+/* ===== Grid de Campanhas ===== */
+.campanhas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+/* ===== Card de Campanha ===== */
+.campanhas-card {
+    background-color: var(--campanhas-white);
+    border-radius: 8px;
+    box-shadow: var(--campanhas-shadow);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.campanhas-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--campanhas-shadow-hover);
+}
+
+.campanhas-card-header {
+    background: linear-gradient(135deg, var(--campanhas-primary-color) 0%, #a93226 100%);
+    color: var(--campanhas-white);
+    padding: 20px;
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.campanhas-card-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.campanhas-card-body {
+    padding: 20px;
+}
+
+.campanhas-description {
+    color: var(--campanhas-text-light);
+    font-size: 14px;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    min-height: 40px;
+}
+
+/* ===== Info Grid ===== */
+.campanhas-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 15px;
+    font-size: 13px;
+}
+
+.campanhas-info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.campanhas-info-label {
+    color: #999;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 11px;
+}
+
+.campanhas-info-value {
+    color: var(--campanhas-text-dark);
+    font-weight: 500;
+}
+
+/* ===== Footer do Card ===== */
+.campanhas-card-footer {
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    text-align: center;
+}
+
+.campanhas-btn {
+    background-color: var(--campanhas-primary-color);
+    color: var(--campanhas-white);
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.campanhas-btn:hover {
+    background-color: var(--campanhas-primary-hover);
+}
+
+/* ===== Mensagem Vazia ===== */
+.campanhas-empty {
+    background-color: var(--campanhas-white);
+    border-radius: 8px;
+    box-shadow: var(--campanhas-shadow);
+    padding: 40px;
+    text-align: center;
+    color: var(--campanhas-text-light);
+    grid-column: 1 / -1;
+}
+
+.campanhas-empty p {
+    margin-bottom: 20px;
+}
+
+/* ===== Responsividade ===== */
+@media (max-width: 768px) {
+    #container-principal {
+        max-width: 100% !important;
+    }
+    
+    .campanhas-container {
+        margin: 20px auto;
+    }
+
+    .campanhas-header h1 {
+        font-size: 24px;
+    }
+
+    .campanhas-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .campanhas-info {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .campanhas-container {
+        margin: 15px auto;
+    }
+
+    .campanhas-header h1 {
+        font-size: 20px;
+    }
+
+    .campanhas-header p {
+        font-size: 14px;
+    }
+
+    .campanhas-card-body {
+        padding: 15px;
+    }
+
+    .campanhas-description {
+        font-size: 13px;
+    }
+}
+
+/* ===== Animações ===== */
+@keyframes campanhas-slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.campanhas-card {
+    animation: campanhas-slideIn 0.3s ease-out;
+}
